@@ -52,6 +52,16 @@
         "value": "",
         "required": false
       },
+      "SPOTIFY_CLIENT_ID": {
+        "description": "Get this credentials from https://developer.spotify.com/dashboard",
+        "value": "",
+        "required": false
+      },
+      "SPOTIFY_CLIENT_SECRET": {
+        "description": "Get this credentials from https://developer.spotify.com/dashboard",
+        "value": "",
+        "required": false
+      },
       "LOGGER_ID": {
         "description": "Your Log Group ID, add your bot and promote as an admin with full rights!. Channel ki id mat daal dena bsdk.",
         "value": "",
