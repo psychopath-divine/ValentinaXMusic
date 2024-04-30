@@ -8,10 +8,10 @@ from telegraph import Telegraph, exceptions, upload_file
 from AnonXMusic import telethn as tbot
 from AnonXMusic.utils.events import register
 
-VIP = "Vip"
+VALENTINE = "Valentine"
 TMP_DOWNLOAD_DIRECTORY = "./"
 telegraph = Telegraph(domain="graph.org")
-r = telegraph.create_account(short_name=VIP)
+r = telegraph.create_account(short_name=VALENTINE)
 auth_url = r["auth_url"]
 
 
