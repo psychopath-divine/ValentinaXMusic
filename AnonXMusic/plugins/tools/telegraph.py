@@ -5,8 +5,8 @@ from telethon import Button
 from PIL import Image
 from telegraph import Telegraph, exceptions, upload_file
 
-from VIPMUSIC import telethn as tbot
-from VIPMUSIC.utils.events import register
+from AnonXMusic import telethn as tbot
+from AnonXMusic.utils.events import register
 
 VIP = "Vip"
 TMP_DOWNLOAD_DIRECTORY = "./"
