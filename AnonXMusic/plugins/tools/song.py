@@ -54,7 +54,7 @@ async def download_song(_, message):
 
     query = " ".join(message.command[1:])  
     print(query)
-    m = await message.reply("**🔄 sᴇᴀʀᴄʜɪɴɢ... **")
+    m = await message.reply("🔄 sᴇᴀʀᴄʜɪɴɢ...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -71,10 +71,10 @@ async def download_song(_, message):
         channel_name = results[0]["channel"]
 
     except Exception as e:
-        await m.edit("**⚠️ ɴᴏ ʀᴇsᴜʟᴛs ᴡᴇʀᴇ ғᴏᴜɴᴅ. ᴍᴀᴋᴇ sᴜʀᴇ ʏᴏᴜ ᴛʏᴘᴇᴅ ᴛʜᴇ ᴄᴏʀʀᴇᴄᴛ sᴏɴɢ ɴᴀᴍᴇ**")
+        await m.edit("⚠️ ɴᴏ ʀᴇsᴜʟᴛs ᴡᴇʀᴇ ғᴏᴜɴᴅ. ᴍᴀᴋᴇ sᴜʀᴇ ʏᴏᴜ ᴛʏᴘᴇᴅ ᴛʜᴇ ᴄᴏʀʀᴇᴄᴛ sᴏɴɢ ɴᴀᴍᴇ")
         print(str(e))
         return
-    await m.edit("**📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ...**")
+    await m.edit("📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ...")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -84,7 +84,7 @@ async def download_song(_, message):
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        await m.edit("**📤 ᴜᴘʟᴏᴀᴅɪɴɢ...**")
+        await m.edit("📤 ᴜᴘʟᴏᴀᴅɪɴɢ...")
 
         await message.reply_audio(
             audio_file,
