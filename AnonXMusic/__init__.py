@@ -6,6 +6,7 @@ from AnonXMusic.misc import dbb, heroku
 from telethon import TelegramClient
 from config import API_ID, API_HASH
 
+from SafoneAPI import SafoneAPI
 from .logging import LOGGER
 
 dirr()
@@ -14,6 +15,7 @@ dbb()
 heroku()
 
 app = Anony()
+api = SafoneAPI()
 userbot = Userbot()
 
 
