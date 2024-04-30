@@ -24,3 +24,5 @@ yt-dlp
 youtube-search
 youtube-search-python
 wget
+telethon==1.33.1
+telegraph==2.2.0
