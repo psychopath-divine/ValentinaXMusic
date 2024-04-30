@@ -3,6 +3,8 @@ from AnonXMusic.core.dir import dirr
 from AnonXMusic.core.git import git
 from AnonXMusic.core.userbot import Userbot
 from AnonXMusic.misc import dbb, heroku
+from telethon import TelegramClient
+from config import API_ID, API_HASH
 
 from .logging import LOGGER
 
@@ -24,3 +26,5 @@ Spotify = SpotifyAPI()
 Resso = RessoAPI()
 Telegram = TeleAPI()
 YouTube = YouTubeAPI()
+
+telethn = TelegramClient("AnonXMusic", API_ID, API_HASH)
