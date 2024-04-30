@@ -32,7 +32,6 @@ SPAM_WINDOW_SECONDS = 5
 
 @app.on_message(filters.command("song"))
 async def download_song(_, message):
-    await message.delete()
     user_id = message.from_user.id
     current_time = time()
     # Update the last message timestamp for the user
@@ -53,17 +52,10 @@ async def download_song(_, message):
         user_command_count[user_id] = 1
         user_last_message_time[user_id] = current_time
 
-    query = " ".join(message.command[1:])
+    query = " ".join(message.command[1:])  
     print(query)
-    m = await message.reply("🔎 finding song...")
-    ydl_ops = {
-        "format": "bestaudio[ext=m4a]",
-        "keepvideo": True,
-        "prefer_ffmpeg": False,
-        "geo_bypass": True,
-        "outtmpl": "%(title)s.%(ext)s",
-        "quite": True,
-    }
+    m = await message.reply("**🔄 sᴇᴀʀᴄʜɪɴɢ... **")
+    ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
@@ -79,10 +71,10 @@ async def download_song(_, message):
         channel_name = results[0]["channel"]
 
     except Exception as e:
-        await m.edit("❌ song not found.\n\n» Give me a valid song name !")
+        await m.edit("**⚠️ ɴᴏ ʀᴇsᴜʟᴛs ᴡᴇʀᴇ ғᴏᴜɴᴅ. ᴍᴀᴋᴇ sᴜʀᴇ ʏᴏᴜ ᴛʏᴘᴇᴅ ᴛʜᴇ ᴄᴏʀʀᴇᴄᴛ sᴏɴɢ ɴᴀᴍᴇ**")
         print(str(e))
         return
-    await m.edit("📥 downloading song...")
+    await m.edit("**📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ...**")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -92,29 +84,28 @@ async def download_song(_, message):
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        await m.edit("📤 uploading song...")
-        
+        await m.edit("**📤 ᴜᴘʟᴏᴀᴅɪɴɢ...**")
+
         await message.reply_audio(
             audio_file,
             thumb=thumb_name,
-            parse_mode="md",
             title=title,
             caption=f"{title}\nRᴇǫᴜᴇsᴛᴇᴅ ʙʏ ➪{message.from_user.mention}\nVɪᴇᴡs➪ {views}\nCʜᴀɴɴᴇʟ➪ {channel_name}",
             duration=dur
         )
         await m.delete()
-
     except Exception as e:
-        await m.edit("❌ error, wait for bot owner to fix")
+        await m.edit(" - An error !!")
         print(e)
+
     try:
         os.remove(audio_file)
         os.remove(thumb_name)
     except Exception as e:
         print(e)
 
-
-
+        
+        
 
 # ------------------------------------------------------------------------------- #
 
