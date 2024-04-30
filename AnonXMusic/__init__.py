@@ -27,4 +27,4 @@ Resso = RessoAPI()
 Telegram = TeleAPI()
 YouTube = YouTubeAPI()
 
-telethn = TelegramClient("AnonXMusic", API_ID, API_HASH)
+telethn = TelegramClient("YukkiMusic", API_ID, API_HASH)
