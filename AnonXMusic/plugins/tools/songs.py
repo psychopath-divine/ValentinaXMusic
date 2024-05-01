@@ -16,12 +16,8 @@ from AnonXMusic.utils.decorators.language import language, languageCB
 from AnonXMusic.utils.formatters import convert_bytes
 from AnonXMusic.utils.inline.song import song_markup
 
-# Command
-SONG_COMMAND = get_command("SONG_COMMAND")
-
-
 @app.on_message(
-    filters.command(SONG_COMMAND)
+    filters.command("song")
     & filters.group
     & ~BANNED_USERS
 )
@@ -44,7 +40,7 @@ async def song_commad_group(client, message: Message, _):
 
 
 @app.on_message(
-    filters.command(SONG_COMMAND)
+    filters.command("song")
     & filters.private
     & ~BANNED_USERS
 )
