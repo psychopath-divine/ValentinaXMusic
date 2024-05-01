@@ -10,7 +10,6 @@ from pyrogram.types import (InlineKeyboardButton,
 
 from config import (BANNED_USERS, SONG_DOWNLOAD_DURATION,
                     SONG_DOWNLOAD_DURATION_LIMIT)
-from strings import get_command
 from AnonXMusic import YouTube, app
 from AnonXMusic.utils.decorators.language import language, languageCB
 from AnonXMusic.utils.formatters import convert_bytes
